@@ -1,6 +1,14 @@
+type SubCategory = {
+  id: string
+  name: string
+  picture: string
+}
+
 type Good = {
   id: string
   name: string
+  desc: string
+  price: number
   picture: string
 }
 
@@ -9,5 +17,6 @@ export type CategoryHead = {
   id: string
   name: string
   picture: string
-  children: Good[]
+  children: SubCategory[]
+  goods: Good[]
 }
