@@ -1,8 +1,8 @@
 # Vue3Shopping
+
 Use Vue3 new features to develop
 
 - setup Composition Style coding
-
 
 Technology
 
@@ -11,3 +11,9 @@ Technology
 - Vite
 - Sass
 - Pinia
+
+How to run the project
+
+npm install
+
+npm run dev
