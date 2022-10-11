@@ -11,6 +11,7 @@ Technology
 - Vite
 - Sass
 - Pinia
+- Axios
 
 How to run the project
 
