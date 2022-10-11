@@ -82,7 +82,14 @@
           <li class="title">搜索推荐</li>
           <li class="title">友情链接</li>
         </ul>
-        <p class="copyright">CopyRight &copy;<span class="name">静默</span></p>
+        <p class="copyright">
+          CopyRight &copy;<span class="name">静默</span>
+          <a
+            href="https://github.com/Q10Viking/Vue3Shopping"
+            class="source-code"
+            >Vue3Shopping Source Code</a
+          >
+        </p>
       </div>
     </section>
     <!-- section-2 end -->
@@ -228,6 +235,11 @@
     }
     .copyright {
       .name {
+        margin-left: 0.5rem;
+        color: $theme-primary-color;
+      }
+
+      .source-code {
         margin-left: 0.5rem;
         color: $theme-primary-color;
       }
