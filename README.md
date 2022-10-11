@@ -12,6 +12,7 @@ Technology
 - Sass
 - [Pinia](https://pinia.vuejs.org/)
 - Axios
+- [Vue Router 4](https://router.vuejs.org/)
 
 How to run the project
 
