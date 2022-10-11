@@ -1,6 +1,6 @@
 # Vue3Shopping
 
-Use Vue3 new features to develop
+Use Vue3 new features to develop a shopping website
 
 - setup Composition Style coding
 
