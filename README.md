@@ -6,13 +6,13 @@ Use Vue3 new features to develop
 
 Technology
 
-- [TypeScript](https://www.typescriptlang.org/)
 - [Vue3](https://vuejs.org/)
 - [Vite](https://vitejs.dev/)
-- [Sass](https://sass-lang.com/)
 - [Pinia](https://pinia.vuejs.org/)
-- [Axios](https://axios-http.com/)
 - [Vue Router 4](https://router.vuejs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Sass](https://sass-lang.com/)
+- [Axios](https://axios-http.com/)
 
 How to run the project
 
