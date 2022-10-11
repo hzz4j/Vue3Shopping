@@ -20,3 +20,12 @@ How to run the project
 npm install
 npm run dev
 ```
+
+> My win11 computer environment
+
+```sh
+node -v
+v16.16.0
+npm -v
+8.15.0
+```
