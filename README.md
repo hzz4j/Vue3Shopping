@@ -7,10 +7,10 @@ Use Vue3 new features to develop
 Technology
 
 - TypeScript
-- Vue3
+- [Vue3](https://vuejs.org/)
 - Vite
 - Sass
-- Pinia
+- [Pinia](https://pinia.vuejs.org/)
 - Axios
 
 How to run the project
