@@ -60,6 +60,7 @@ function updateActive(val: number) {
     .foods-wrapper {
       //   padding: 1rem 2rem;
       box-shadow: 0 0 0.5rem #ccc;
+      background-color: #fff;
       position: absolute;
       top: 5.6rem;
       left: -20rem;
