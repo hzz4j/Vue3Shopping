@@ -6,6 +6,5 @@ import type { CategoryHead } from "@/types/category/CategoryHead"
  * @returns CategoryHead
  */
 export function getCategoryHead() {
-  console.log("HHHH")
   return request<CategoryHead[]>("/home/category/head", "get")
 }
