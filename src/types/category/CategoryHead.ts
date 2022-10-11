@@ -1,14 +1,8 @@
+import type { Goods } from "@/types/category/Goods"
+
 type SubCategory = {
   id: string
   name: string
-  picture: string
-}
-
-type Good = {
-  id: string
-  name: string
-  desc: string
-  price: number
   picture: string
 }
 
@@ -18,5 +12,5 @@ export type CategoryHead = {
   name: string
   picture: string
   children: SubCategory[]
-  goods: Good[]
+  goods: Goods[]
 }

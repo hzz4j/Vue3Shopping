@@ -1,7 +1,12 @@
 <template>
   <div class="home__category-wrapper">
     <ul class="menus">
-      <li v-for="category in categoryHeads" :key="category.id" class="menu">
+      <li
+        v-for="category in categoryHeads"
+        :key="category.id"
+        class="menu"
+        @mouseenter="hoverOnMenu(category.id)"
+      >
         <RouterLink to="/" class="link">{{ category.name }}</RouterLink>
 
         <RouterLink
@@ -18,15 +23,13 @@
     <section class="layer-wrapper">
       <h4 class="title">分类推荐<small>根据您的浏览或者购买记录推荐</small></h4>
       <ul class="goods-wrapper">
-        <li v-for="i in 9" :key="i" class="goods">
+        <li v-for="goods in currentGoods" :key="goods.id" class="goods">
           <RouterLink to="/" class="link">
-            <img
-              src="https://yanxuan-item.nosdn.127.net/5a115da8f2f6489d8c71925de69fe7b8.png"
-            />
+            <img :src="goods.picture" />
             <div class="info">
-              <p class="name">定金购】严选零食大礼包（12件）</p>
-              <p class="description">超值组合装，满足馋嘴欲</p>
-              <p class="price"><i>¥</i>100.00</p>
+              <p class="name">{{ goods.name }}</p>
+              <p class="description">{{ goods.desc }}</p>
+              <p class="price"><i>¥</i>{{ goods.price }}</p>
             </div>
           </RouterLink>
         </li>
@@ -36,12 +39,19 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue"
+import { ref, computed, type Ref } from "vue"
 import { RouterLink } from "vue-router"
 import { useCategoryStore } from "@/store/category"
+import type { Goods } from "@/types/category/Goods"
 
 const categoryStore = useCategoryStore()
 const categoryHeads = computed(() => categoryStore.categoryHeadsWithTwoChildren)
+const currentGoods: Ref<Goods[]> = ref([])
+
+function hoverOnMenu(categoryId: string) {
+  const re = categoryHeads.value.find((item) => item.id === categoryId)
+  if (re) currentGoods.value = re.goods
+}
 </script>
 
 <style lang="scss" scoped>
