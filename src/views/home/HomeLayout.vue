@@ -13,8 +13,17 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref, type Ref } from "vue"
 import HomeCategory from "@/components/home/HomeCategory.vue"
-import LookMore from "../../components/libraries/more/LookMore.vue"
+import LookMore from "@/components/libraries/more/LookMore.vue"
+import { findNew } from "@/api/home"
+import type { Goods } from "@/types/home/home"
+
+const goodsNew: Ref<Goods[]> = ref([])
+
+onMounted(async () => {
+  goodsNew.value = await findNew()
+})
 </script>
 
 <style lang="scss" scoped></style>
