@@ -1,3 +1,20 @@
 @mixin colorText($val) {
     color: $val;
 }
+
+
+// 鼠标经过上移阴影动画
+@mixin hoverShadow () {
+  transition: all .5s;
+  &:hover {
+    transform: translate3d(0,-.3rem,0);
+    box-shadow: 0 .3rem .8rem rgba(0,0,0,0.2);
+  }
+}
+
+// 文字省略号
+@mixin textEllipse(){
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

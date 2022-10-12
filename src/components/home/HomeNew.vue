@@ -36,7 +36,7 @@ onMounted(async () => {
   .goods {
     width: 30.6rem;
     height: 40.6rem;
-
+    @include hoverShadow();
     img {
       width: 100%;
       height: 75%;
@@ -51,13 +51,11 @@ onMounted(async () => {
       justify-content: space-evenly;
 
       .name {
+        @include textEllipse();
         // 需要给宽度
         width: 100%;
         padding: 0 1rem;
         font-size: 2.2rem;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
       }
     }
   }
