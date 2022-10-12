@@ -4,15 +4,15 @@
       <LookMore></LookMore>
     </template>
 
-    <div class="goods-wrapper">
-      <div class="goods" v-for="item in goods" :key="item.id">
+    <ul class="goods-wrapper">
+      <li class="goods" v-for="item in goods" :key="item.id">
         <img :src="item.picture" alt="" />
         <div class="info">
-          <p class="desc">{{ item.desc }}</p>
+          <p class="name">{{ item.name }}</p>
           <PriceIcon :price="item.price"></PriceIcon>
         </div>
-      </div>
-    </div>
+      </li>
+    </ul>
   </PanelComponent>
 </template>
 
@@ -28,3 +28,38 @@ onMounted(async () => {
   goods.value = await findNew()
 })
 </script>
+
+<style lang="scss" scoped>
+.goods-wrapper {
+  display: flex;
+  justify-content: space-between;
+  .goods {
+    width: 30.6rem;
+    height: 40.6rem;
+
+    img {
+      width: 100%;
+      height: 75%;
+      object-fit: contain;
+    }
+
+    .info {
+      height: 25%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+
+      .name {
+        // 需要给宽度
+        width: 100%;
+        padding: 0 1rem;
+        font-size: 2.2rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
+}
+</style>
