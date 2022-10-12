@@ -20,8 +20,8 @@
         </template>
 
         <template v-else>
-          <SkelenComponent width="6rem" height="3rem"></SkelenComponent>
-          <SkelenComponent width="6rem" height="3rem"></SkelenComponent>
+          <SkeletonComponent width="6rem" height="3rem"></SkeletonComponent>
+          <SkeletonComponent width="6rem" height="3rem"></SkeletonComponent>
         </template>
       </li>
     </ul>
@@ -45,7 +45,6 @@
 </template>
 
 <script setup lang="ts">
-import SkelenComponent from "@/components/skeleton/SkeletonComponent.vue"
 import { ref, computed, type Ref } from "vue"
 import { useCategoryStore } from "@/store/category"
 import type { Goods } from "@/types/category/Goods"
