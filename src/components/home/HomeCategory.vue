@@ -20,8 +20,8 @@
         </template>
 
         <template v-else>
-          <SkelenComponent width="6.5rem" height="5rem"></SkelenComponent>
-          <SkelenComponent width="6.5rem" height="5rem"></SkelenComponent>
+          <SkelenComponent width="6rem" height="3rem"></SkelenComponent>
+          <SkelenComponent width="6rem" height="3rem"></SkelenComponent>
         </template>
       </li>
     </ul>
@@ -81,6 +81,7 @@ function updateCurrentGoodsByCategoryId(id: string) {
   display: flex;
   flex-wrap: nowrap;
   .menus {
+    padding-top: 1rem;
     width: 25rem;
     height: $category-height;
     background-color: $category-bg-color;
@@ -89,6 +90,8 @@ function updateCurrentGoodsByCategoryId(id: string) {
       padding-left: 4rem;
       height: 5rem;
       line-height: 5rem;
+
+      display: flex;
       &:hover {
         background-color: $theme-primary-color;
       }
