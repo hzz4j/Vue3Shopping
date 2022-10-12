@@ -28,7 +28,6 @@
 <script lang="ts" setup>
 import { onUnmounted, computed, watch, ref } from "vue"
 import type { Banner } from "@/types/category/Banner"
-import NextIcon from "../../icons/NextIcon.vue"
 
 interface Props {
   slides: Banner[]
