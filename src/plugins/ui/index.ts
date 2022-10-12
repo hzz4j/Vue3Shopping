@@ -8,11 +8,13 @@ import CarouselComponent from "@/components/libraries/carousel/CarouselComponent
 import NextIcon from "@/components/icons/NextIcon.vue"
 import PrevIcon from "@/components/icons/PrevIcon.vue"
 import LookMore from "@/components/libraries/more/LookMore.vue"
+import PanelComponent from "@/components/libraries/panel/PanelComponent.vue"
 
 const UIPlugin = {
   install(app: App) {
     app.component("SkeletonComponent", SkeletonComponent)
     app.component("CarouselComponent", CarouselComponent)
+    app.component("PanelComponent", PanelComponent)
     app.component("LookMore", LookMore)
     app.component("NextIcon", NextIcon)
     app.component("PrevIcon", PrevIcon)
