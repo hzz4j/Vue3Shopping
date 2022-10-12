@@ -1,27 +1,76 @@
 <template>
-  <div class="carousel-wrapper">
+  <div class="carousel-wrapper" @mouseenter="stop" @mouseleave="autoPlay">
     <ul class="carousel-body">
       <li>
         <RouterLink to="/">
-          <img
-            src="http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-15/1ba86bcc-ae71-42a3-bc3e-37b662f7f07e.jpg"
-            alt=""
-          />
+          <img :src="banners[index]?.imgUrl" alt="" />
         </RouterLink>
       </li>
     </ul>
 
-    <a href="javascript:void(0)" class="prev">
+    <a href="javascript:void(0)" class="prev" @click="toggle(false)">
       <i class="iconfont icon-lunbo"></i
     ></a>
-    <a href="javascript:void(0)" class="next">
+    <a href="javascript:void(0)" class="next" @click="toggle(true)">
       <i class="iconfont icon-next"></i
     ></a>
     <div class="indicator">
-      <span v-for="i in 5" :key="i"></span>
+      <span
+        v-for="i in dotCount"
+        :key="i"
+        :class="{ active: i - 1 === index }"
+        @click="index = i - 1"
+      ></span>
     </div>
   </div>
 </template>
+
+<script lang="ts" setup>
+import { onMounted, computed, watch, ref, type Ref } from "vue"
+import { getBanner } from "@/api/home"
+import type { Banner } from "@/types/category/Banner"
+
+const banners: Ref<Banner[]> = ref([])
+const index = ref(0)
+let intervalFlag: number
+const dotCount = computed(() => {
+  return banners.value.length
+})
+
+onMounted(async () => {
+  banners.value = await getBanner()
+})
+
+watch(banners, (newvalue) => {
+  if (newvalue.length > 0) {
+    autoPlay()
+  }
+})
+
+function autoPlay() {
+  intervalFlag = setInterval(() => {
+    increaseIndex()
+  }, 2000)
+}
+
+function increaseIndex() {
+  index.value++
+  if (index.value >= banners.value.length) index.value = 0
+}
+
+function decreaseIndex() {
+  index.value--
+  if (index.value < 0) index.value = banners.value.length - 1
+}
+
+function stop() {
+  clearInterval(intervalFlag)
+}
+
+function toggle(forward: boolean) {
+  forward ? increaseIndex() : decreaseIndex()
+}
+</script>
 
 <style lang="scss" scoped>
 .carousel-wrapper {
@@ -80,6 +129,10 @@
       background: $indicator-color;
       border-radius: 50%;
       margin: 0 1rem;
+
+      &.active {
+        background-color: #fff;
+      }
     }
   }
 }
