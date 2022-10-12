@@ -19,5 +19,6 @@ export default titles.map(
       name: title,
       picture: "",
       children: [],
+      goods: [],
     } as CategoryHead)
 )
