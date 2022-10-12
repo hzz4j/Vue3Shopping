@@ -9,11 +9,11 @@
     </ul>
 
     <a href="javascript:void(0)" class="prev" @click="toggle(false)">
-      <i class="iconfont icon-lunbo"></i
-    ></a>
+      <PrevIcon></PrevIcon>
+    </a>
     <a href="javascript:void(0)" class="next" @click="toggle(true)">
-      <i class="iconfont icon-next"></i
-    ></a>
+      <NextIcon></NextIcon>
+    </a>
     <div class="indicator">
       <span
         v-for="i in dotCount"
@@ -28,6 +28,7 @@
 <script lang="ts" setup>
 import { onUnmounted, computed, watch, ref } from "vue"
 import type { Banner } from "@/types/category/Banner"
+import NextIcon from "../../icons/NextIcon.vue"
 
 interface Props {
   slides: Banner[]
