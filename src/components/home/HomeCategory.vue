@@ -43,19 +43,30 @@
     </section>
 
     <section class="carousel">
-      <CarouselComponent></CarouselComponent>
+      <CarouselComponent
+        :slides="banners"
+        :duration="2000"
+        autoPlay
+      ></CarouselComponent>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, type Ref } from "vue"
+import { ref, onMounted, computed, type Ref } from "vue"
 import { useCategoryStore } from "@/store/category"
+import { getBanner } from "@/api/home"
 import type { Goods } from "@/types/category/Goods"
+import type { Banner } from "@/types/category/Banner"
 
 const categoryStore = useCategoryStore()
 const categoryHeads = computed(() => categoryStore.categoryHeadsWithTwoChildren)
 const currentGoods: Ref<Goods[]> = ref([])
+const banners: Ref<Banner[]> = ref([])
+
+onMounted(async () => {
+  banners.value = await getBanner()
+})
 
 const isShowLayer = computed(() => {
   return currentGoods.value.length > 0

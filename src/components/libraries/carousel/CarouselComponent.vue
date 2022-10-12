@@ -3,7 +3,7 @@
     <ul class="carousel-body">
       <li>
         <RouterLink to="/">
-          <img :src="banners[index]?.imgUrl" alt="" />
+          <img :src="slides[index]?.imgUrl" alt="" />
         </RouterLink>
       </li>
     </ul>
@@ -26,41 +26,56 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, computed, watch, ref, type Ref } from "vue"
-import { getBanner } from "@/api/home"
+import { onUnmounted, computed, watch, ref } from "vue"
 import type { Banner } from "@/types/category/Banner"
 
-const banners: Ref<Banner[]> = ref([])
+interface Props {
+  slides: Banner[]
+  duration?: number
+  autoPlay?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  duration: 3000,
+  autoPlay: false,
+})
+
 const index = ref(0)
 let intervalFlag: number
 const dotCount = computed(() => {
-  return banners.value.length
+  return getSlidesLength()
 })
 
-onMounted(async () => {
-  banners.value = await getBanner()
-})
+onUnmounted(() => clearInterval(intervalFlag))
 
-watch(banners, (newvalue) => {
-  if (newvalue.length > 0) {
-    autoPlay()
+watch(
+  () => props.slides,
+  (newvalue) => {
+    if (newvalue.length > 0) {
+      autoPlay()
+    }
   }
-})
+)
 
 function autoPlay() {
+  if (!props.autoPlay) return
   intervalFlag = setInterval(() => {
     increaseIndex()
-  }, 2000)
+  }, props.duration)
 }
 
 function increaseIndex() {
   index.value++
-  if (index.value >= banners.value.length) index.value = 0
+  if (index.value >= getSlidesLength()) index.value = 0
 }
 
 function decreaseIndex() {
   index.value--
-  if (index.value < 0) index.value = banners.value.length - 1
+  if (index.value < 0) index.value = getSlidesLength() - 1
+}
+
+function getSlidesLength() {
+  return props.slides.length
 }
 
 function stop() {
