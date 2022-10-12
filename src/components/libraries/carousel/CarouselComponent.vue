@@ -27,6 +27,7 @@
 .carousel-wrapper {
   position: relative;
   z-index: $caroursel-zindex;
+
   .carousel-body {
     img {
       width: 100%;
@@ -49,15 +50,23 @@
     line-height: 4.4rem;
     color: #fff;
     background-color: rgba($color: #000000, $alpha: 0.3);
+    opacity: 0;
   }
   .prev {
     top: 50%;
-    left: 2rem;
+    left: 27rem;
   }
 
   .next {
     top: 50%;
     right: 2rem;
+  }
+
+  &:hover {
+    .prev,
+    .next {
+      opacity: 1;
+    }
   }
 
   .indicator {
