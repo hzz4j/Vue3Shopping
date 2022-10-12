@@ -1,7 +1,7 @@
 /**
  * 该插件用于安装组件
  */
-import SkeletonComponent from "@/components/skeleton/SkeletonComponent.vue"
+import SkeletonComponent from "@/components/libraries/skeleton/SkeletonComponent.vue"
 import CarouselComponent from "@/components/libraries/carousel/CarouselComponent.vue"
 import type { App } from "vue"
 
