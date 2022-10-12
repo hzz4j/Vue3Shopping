@@ -20,7 +20,7 @@
       </li>
     </ul>
 
-    <section class="layer-wrapper">
+    <section v-show="isShowLayer" class="layer-wrapper">
       <h4 class="title">分类推荐<small>根据您的浏览或者购买记录推荐</small></h4>
       <ul class="goods-wrapper">
         <li v-for="goods in currentGoods" :key="goods.id" class="goods">
@@ -48,9 +48,25 @@ const categoryStore = useCategoryStore()
 const categoryHeads = computed(() => categoryStore.categoryHeadsWithTwoChildren)
 const currentGoods: Ref<Goods[]> = ref([])
 
+const isShowLayer = computed(() => {
+  return currentGoods.value.length > 0
+})
+
 function hoverOnMenu(categoryId: string) {
-  const re = categoryHeads.value.find((item) => item.id === categoryId)
-  if (re) currentGoods.value = re.goods
+  updateCurrentGoodsByCategoryId(categoryId)
+}
+
+function findCurrentCategoryById(categoryId: string) {
+  return categoryHeads.value.find((item) => item.id === categoryId)
+}
+
+function updateCurrentGoodsByCategoryId(id: string) {
+  const currentCategory = findCurrentCategoryById(id)
+  if (currentCategory) {
+    currentGoods.value = currentCategory.goods
+  } else {
+    currentGoods.value = []
+  }
 }
 </script>
 
