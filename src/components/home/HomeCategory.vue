@@ -8,15 +8,21 @@
         @mouseenter="hoverOnMenu(category.id)"
       >
         <RouterLink to="/" class="link">{{ category.name }}</RouterLink>
+        <template v-if="category.children.length === 10">
+          <RouterLink
+            to="/"
+            v-for="item in category.children"
+            :key="item.id"
+            class="link"
+          >
+            {{ item.name }}
+          </RouterLink>
+        </template>
 
-        <RouterLink
-          to="/"
-          v-for="item in category.children"
-          :key="item.id"
-          class="link"
-        >
-          {{ item.name }}
-        </RouterLink>
+        <template v-else>
+          <SkelenComponent width="6.5rem" height="5rem"></SkelenComponent>
+          <SkelenComponent width="6.5rem" height="5rem"></SkelenComponent>
+        </template>
       </li>
     </ul>
 
@@ -39,8 +45,8 @@
 </template>
 
 <script setup lang="ts">
+import SkelenComponent from "@/components/skeleton/SkeletonComponent.vue"
 import { ref, computed, type Ref } from "vue"
-import { RouterLink } from "vue-router"
 import { useCategoryStore } from "@/store/category"
 import type { Goods } from "@/types/category/Goods"
 
@@ -77,7 +83,6 @@ function updateCurrentGoodsByCategoryId(id: string) {
   .menus {
     width: 25rem;
     height: $category-height;
-
     background-color: $category-bg-color;
 
     .menu {
