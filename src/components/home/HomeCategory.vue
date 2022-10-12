@@ -1,6 +1,6 @@
 <template>
   <div class="home__category-wrapper">
-    <ul class="menus">
+    <ul class="menus" @mouseleave="handleMouseLeaveMenu">
       <li
         v-for="category in categoryHeads"
         :key="category.id"
@@ -8,7 +8,7 @@
         @mouseenter="hoverOnMenu(category.id)"
       >
         <RouterLink to="/" class="link">{{ category.name }}</RouterLink>
-        <template v-if="category.children.length === 10">
+        <template v-if="category.children.length > 0">
           <RouterLink
             to="/"
             v-for="item in category.children"
@@ -58,6 +58,10 @@ const isShowLayer = computed(() => {
   return currentGoods.value.length > 0
 })
 
+function handleMouseLeaveMenu() {
+  currentGoods.value = []
+}
+
 function hoverOnMenu(categoryId: string) {
   updateCurrentGoodsByCategoryId(categoryId)
 }
@@ -92,6 +96,7 @@ function updateCurrentGoodsByCategoryId(id: string) {
       line-height: 5rem;
 
       display: flex;
+      align-items: center;
       &:hover {
         background-color: $theme-primary-color;
       }
