@@ -41,6 +41,10 @@
         </li>
       </ul>
     </section>
+
+    <section class="carousel">
+      <CarouselComponent></CarouselComponent>
+    </section>
   </div>
 </template>
 
@@ -83,12 +87,13 @@ function updateCurrentGoodsByCategoryId(id: string) {
 .home__category-wrapper {
   display: flex;
   flex-wrap: nowrap;
+  position: relative;
   .menus {
     padding-top: 1rem;
     width: 25rem;
     height: $category-height;
     background-color: $category-bg-color;
-
+    z-index: $home-category-zindex;
     .menu {
       padding-left: 4rem;
       height: 5rem;
@@ -117,6 +122,7 @@ function updateCurrentGoodsByCategoryId(id: string) {
     width: 99rem;
     height: $category-height;
     background-color: $sub-category-bg-color;
+    z-index: $home-category-zindex;
 
     .title {
       line-height: 8rem;
@@ -177,6 +183,10 @@ function updateCurrentGoodsByCategoryId(id: string) {
         }
       }
     }
+  }
+
+  .carousel {
+    position: absolute;
   }
 }
 </style>

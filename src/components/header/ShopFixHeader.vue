@@ -39,7 +39,7 @@ const fixNavBar = computed(() => y.value > 76)
     top: 0;
     left: 0;
     transform: none;
-    z-index: 100;
+    z-index: $header-zindex;
     .logo {
       height: 80px;
     }

@@ -23,6 +23,7 @@ $container-size: 1240px;
 $category-bg-color: rgba(0,0,0,0.8);
 $sub-category-bg-color: rgba(255,255,255,0.8);
 $category-height: 50rem;
+$indicator-color:rgba(0,0,0,0.2);
 
 //----------------------------Home Category end--------------------------------------------
 
@@ -36,3 +37,8 @@ $text-size: 1.3rem;
 
 
 //-----------------footer-section-1-variables(end)-------------------------
+
+// ------------z-index---------------------
+$header-zindex: 100;
+$home-category-zindex: 99;
+$caroursel-zindex: 98;

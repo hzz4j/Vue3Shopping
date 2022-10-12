@@ -37,6 +37,7 @@ function updateActive(val: number) {
   width: 100%;
   font-size: 1.6rem;
   position: relative;
+  z-index: $header-zindex;
 
   .title {
     display: flex;
