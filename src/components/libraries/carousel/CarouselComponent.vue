@@ -54,7 +54,7 @@
   }
   .prev {
     top: 50%;
-    left: 27rem;
+    left: 2rem;
   }
 
   .next {

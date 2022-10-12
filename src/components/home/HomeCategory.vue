@@ -187,6 +187,10 @@ function updateCurrentGoodsByCategoryId(id: string) {
 
   .carousel {
     position: absolute;
+
+    :deep(.prev) {
+      left: 27rem;
+    }
   }
 }
 </style>
