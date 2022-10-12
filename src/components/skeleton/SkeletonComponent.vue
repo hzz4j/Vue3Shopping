@@ -1,5 +1,7 @@
 <template>
-  <div class="skeleton" :style="size">111</div>
+  <div class="skeleton-wrapper shan" :style="size">
+    <div class="block"></div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -24,10 +26,45 @@ const size = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-.skeleton {
+.skeleton-wrapper {
   display: inline-block;
   margin: 1rem;
-  color: #fff;
-  background-color: white;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.8rem;
+
+  .block {
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #fff, $alpha: 0.2);
+  }
+
+  &.shan {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+
+      background: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-45deg);
+      animation: move 1.5s ease infinite;
+
+      @keyframes move {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 120%;
+        }
+      }
+    }
+  }
 }
 </style>
