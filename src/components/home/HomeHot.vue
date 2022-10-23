@@ -1,46 +1,42 @@
 <template>
-  <PanelComponent mainTitle="新鲜好物品" subTitle="新鲜出炉 品质靠谱">
-    <template #right>
-      <LookMore></LookMore>
-    </template>
-
+  <PanelComponent main-title="人气推荐" sub-title="人气爆款 不容错过">
     <ul class="goods-wrapper">
       <li class="goods" v-for="item in goods" :key="item.id">
         <img :src="item.picture" alt="" />
         <div class="info">
-          <p class="name">{{ item.name }}</p>
-          <PriceIcon :price="item.price"></PriceIcon>
+          <h3 class="title">{{ item.title }}</h3>
+          <p class="alt">{{ item.alt }}</p>
         </div>
       </li>
     </ul>
   </PanelComponent>
 </template>
-
 <script lang="ts" setup>
 import { onMounted, ref, type Ref } from "vue"
-import LookMore from "@/components/libraries/more/LookMore.vue"
-import { findNew } from "@/api/home"
-import type { GoodsNew as Goods } from "@/types/home/home"
+import PanelComponent from "@/components/libraries/panel/PanelComponent.vue"
+import { findHot } from "@/api/home"
+import type { GoodsHot as Goods } from "@/types/home/home"
 
 const goods: Ref<Goods[]> = ref([])
-
 onMounted(async () => {
-  goods.value = await findNew()
+  goods.value = await findHot()
 })
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .goods-wrapper {
   display: flex;
   justify-content: space-between;
+
   .goods {
     width: 30.6rem;
     height: 40.6rem;
     @include hoverShadow();
+
     img {
       width: 100%;
       height: 75%;
-      object-fit: contain;
+      object-fit: cover;
     }
 
     .info {
@@ -48,14 +44,16 @@ onMounted(async () => {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: center;
 
-      .name {
-        @include textEllipse();
-        // 需要给宽度
-        width: 100%;
-        padding: 0 1rem;
+      .title {
         font-size: 2.2rem;
+        font-weight: normal;
+      }
+
+      .alt {
+        color: #999;
+        padding-top: 2.2rem;
       }
     }
   }
