@@ -4,21 +4,29 @@
       <LookMore></LookMore>
     </template>
 
-    <ul class="goods-wrapper">
-      <li class="goods" v-for="item in goods" :key="item.id">
-        <img :src="item.picture" alt="" />
-        <div class="info">
-          <p class="name">{{ item.name }}</p>
-          <PriceIcon :price="item.price"></PriceIcon>
-        </div>
-      </li>
-    </ul>
+    <div class="transition-wrapper">
+      <Transition name="fade">
+        <template v-if="goods.length === 0">
+          <HomeSkeleton bg-color="#f0f9f4"></HomeSkeleton>
+        </template>
+        <ul class="goods-wrapper" v-else>
+          <li class="goods" v-for="item in goods" :key="item.id">
+            <img :src="item.picture" alt="" />
+            <div class="info">
+              <p class="name">{{ item.name }}</p>
+              <PriceIcon :price="item.price"></PriceIcon>
+            </div>
+          </li>
+        </ul>
+      </Transition>
+    </div>
   </PanelComponent>
 </template>
 
 <script lang="ts" setup>
 import { onMounted, ref, type Ref } from "vue"
 import LookMore from "@/components/libraries/more/LookMore.vue"
+import HomeSkeleton from "@/components/home/HomeSkeleton.vue"
 import { findNew } from "@/api/home"
 import type { GoodsNew as Goods } from "@/types/home/home"
 
@@ -36,6 +44,7 @@ onMounted(async () => {
   .goods {
     width: 30.6rem;
     height: 40.6rem;
+    background-color: #f0f9f4;
     @include hoverShadow();
     img {
       width: 100%;
@@ -56,6 +65,24 @@ onMounted(async () => {
         width: 100%;
         padding: 0 1rem;
         font-size: 2.2rem;
+      }
+    }
+  }
+}
+
+.transition-wrapper {
+  position: relative;
+  .fade {
+    &-leave {
+      &-active {
+        position: absolute;
+        width: 100%;
+        transition: opacity 1s 0.3s;
+        z-index: 10;
+      }
+
+      &-to {
+        opacity: 0;
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="skeleton-wrapper shan" :style="size">
-    <div class="block"></div>
+    <div class="block" :style="{ 'background-color': bgColor }"></div>
   </div>
 </template>
 
@@ -10,11 +10,13 @@ import { computed } from "vue"
 interface Props {
   width?: string
   height?: string
+  bgColor: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
   width: "10rem",
   height: "10rem",
+  bgColor: "rgba(255, 255, 255, 0.2)",
 })
 
 const size = computed(() => {
@@ -36,7 +38,7 @@ const size = computed(() => {
   .block {
     width: 100%;
     height: 100%;
-    background-color: rgba($color: #fff, $alpha: 0.2);
+    // background-color: rgba($color: #fff, $alpha: 0.2);
   }
 
   &.shan {
