@@ -25,8 +25,6 @@
 
 <script lang="ts" setup>
 import { onMounted, ref, type Ref } from "vue"
-import LookMore from "@/components/libraries/more/LookMore.vue"
-import HomeSkeleton from "@/components/home/HomeSkeleton.vue"
 import { findNew } from "@/api/home"
 import type { GoodsNew as Goods } from "@/types/home/home"
 
