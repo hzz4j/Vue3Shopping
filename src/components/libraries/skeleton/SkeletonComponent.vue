@@ -10,7 +10,7 @@ import { computed } from "vue"
 interface Props {
   width?: string
   height?: string
-  bgColor: string
+  bgColor?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {

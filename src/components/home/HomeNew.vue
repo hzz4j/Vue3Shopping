@@ -27,6 +27,7 @@
 import { onMounted, ref, type Ref } from "vue"
 import { findNew } from "@/api/home"
 import type { GoodsNew as Goods } from "@/types/home/home"
+import HomeSkeleton from "@/components/home/HomeSkeleton.vue"
 
 const goods: Ref<Goods[]> = ref([])
 
