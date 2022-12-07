@@ -1,19 +1,27 @@
 <template>
   <PanelComponent main-title="人气推荐" sub-title="人气爆款 不容错过">
-    <ul class="goods-wrapper">
-      <li class="goods" v-for="item in goods" :key="item.id">
-        <img :src="item.picture" alt="" />
-        <div class="info">
-          <h3 class="title">{{ item.title }}</h3>
-          <p class="alt">{{ item.alt }}</p>
-        </div>
-      </li>
-    </ul>
+    <div class="transition-wrapper">
+      <Transition name="fade">
+        <template v-if="goods.length === 0">
+          <HomeSkeleton bg-color="#f0f9f4"></HomeSkeleton>
+        </template>
+        <ul class="goods-wrapper" v-else>
+          <li class="goods" v-for="item in goods" :key="item.id">
+            <img :src="item.picture" alt="" />
+            <div class="info">
+              <h3 class="title">{{ item.title }}</h3>
+              <p class="alt">{{ item.alt }}</p>
+            </div>
+          </li>
+        </ul>
+      </Transition>
+    </div>
   </PanelComponent>
 </template>
 <script lang="ts" setup>
 import { onMounted, ref, type Ref } from "vue"
 import PanelComponent from "@/components/libraries/panel/PanelComponent.vue"
+import HomeSkeleton from "@/components/home/HomeSkeleton.vue"
 import { findHot } from "@/api/home"
 import type { GoodsHot as Goods } from "@/types/home/home"
 

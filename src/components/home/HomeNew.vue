@@ -68,22 +68,4 @@ onMounted(async () => {
     }
   }
 }
-
-.transition-wrapper {
-  position: relative;
-  .fade {
-    &-leave {
-      &-active {
-        position: absolute;
-        width: 100%;
-        transition: opacity 1s 0.3s;
-        z-index: 10;
-      }
-
-      &-to {
-        opacity: 0;
-      }
-    }
-  }
-}
 </style>

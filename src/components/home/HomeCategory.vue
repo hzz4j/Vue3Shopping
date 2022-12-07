@@ -31,7 +31,7 @@
       <ul class="goods-wrapper">
         <li v-for="goods in currentGoods" :key="goods.id" class="goods">
           <RouterLink to="/" class="link">
-            <img :src="goods.picture" />
+            <img :src="goods.picture" alt="商品图片" />
             <div class="info">
               <p class="name">{{ goods.name }}</p>
               <p class="description">{{ goods.desc }}</p>
