@@ -8,7 +8,7 @@
       </div>
     </template>
 
-    <ul class="brand-wrapper">
+    <ul class="brand-wrapper" ref="target">
       <li v-for="idx in 10" :key="idx">
         <img
           src="http://zhoushugang.gitee.io/erabbit-client-pc-static/uploads/brand_goods_1.jpg"
@@ -19,7 +19,15 @@
   </PanelComponent>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useIntersectionObserver } from "@/composables/useIntersectionObserver"
+import { ref, onMounted } from "vue"
+const target = ref(null)
+
+onMounted(() => {
+  useIntersectionObserver(target, ([{ isIntersecting }], observerElement) => {})
+})
+</script>
 
 <style lang="scss" scoped>
 .btns {
