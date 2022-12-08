@@ -25,7 +25,11 @@ import { ref, onMounted } from "vue"
 const target = ref(null)
 
 onMounted(() => {
-  useIntersectionObserver(target, ([{ isIntersecting }], observerElement) => {})
+  useIntersectionObserver(target, ([{ isIntersecting }], observerElement) => {
+    if (isIntersecting) {
+      console.log("loaded data")
+    }
+  })
 })
 </script>
 
