@@ -1,5 +1,8 @@
 <template>
-  <p class="price"><i>¥</i>{{ price }}</p>
+  <p class="price">
+    <i>{{ unit }}</i
+    >{{ price }}
+  </p>
 </template>
 
 <script setup lang="ts">
@@ -7,6 +10,10 @@ defineProps({
   price: {
     type: String,
     required: true,
+  },
+  unit: {
+    type: String,
+    default: "¥",
   },
 })
 </script>

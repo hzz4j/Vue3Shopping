@@ -37,7 +37,7 @@ withDefaults(defineProps<Props>(), {
       font-weight: normal;
       height: 3.5rem;
       line-height: 3.5rem;
-
+      flex: 1;
       small {
         font-size: 1.6rem;
         margin-left: 2rem;
