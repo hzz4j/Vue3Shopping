@@ -4,7 +4,7 @@
       <LookMore></LookMore>
     </template>
 
-    <div class="transition-wrapper">
+    <div class="transition-wrapper" ref="target">
       <Transition name="fade">
         <template v-if="goods.length === 0">
           <HomeSkeleton bg-color="#f0f9f4"></HomeSkeleton>
@@ -24,16 +24,11 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, type Ref } from "vue"
 import { findNew } from "@/api/home"
-import type { GoodsNew as Goods } from "@/types/home/home"
 import HomeSkeleton from "@/components/home/HomeSkeleton.vue"
+import { useLazyData } from "@/composables/useLazyData"
 
-const goods: Ref<Goods[]> = ref([])
-
-onMounted(async () => {
-  goods.value = await findNew()
-})
+const { target, result: goods } = useLazyData(findNew)
 </script>
 
 <style lang="scss" scoped>

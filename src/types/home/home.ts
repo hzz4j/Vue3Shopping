@@ -12,3 +12,12 @@ export type GoodsHot = {
   title: string
   alt: string
 }
+
+export type Brand = {
+  id: string
+  msg: string
+  result: Object[]
+  picture: string
+  name: string
+  nameEn: string
+}
