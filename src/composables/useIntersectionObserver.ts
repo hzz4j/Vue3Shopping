@@ -17,8 +17,8 @@ export function useIntersectionObserver(
   }
 ) {
   console.log("订阅懒加载")
-
   const observer = new IntersectionObserver(callback, options)
   // unref 去除响应式
   observer.observe(unref(target))
+  return { observer }
 }
