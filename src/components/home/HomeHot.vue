@@ -1,6 +1,6 @@
 <template>
   <PanelComponent main-title="人气推荐" sub-title="人气爆款 不容错过">
-    <div class="transition-wrapper">
+    <div class="transition-wrapper" ref="target">
       <Transition name="fade">
         <template v-if="goods.length === 0">
           <HomeSkeleton bg-color="#f0f9f4"></HomeSkeleton>
@@ -19,16 +19,12 @@
   </PanelComponent>
 </template>
 <script lang="ts" setup>
-import { onMounted, ref, type Ref } from "vue"
 import PanelComponent from "@/components/libraries/panel/PanelComponent.vue"
 import HomeSkeleton from "@/components/home/HomeSkeleton.vue"
 import { findHot } from "@/api/home"
-import type { GoodsHot as Goods } from "@/types/home/home"
+import { useLazyData } from "@/composables/useLazyData"
 
-const goods: Ref<Goods[]> = ref([])
-onMounted(async () => {
-  goods.value = await findHot()
-})
+const { result: goods, target } = useLazyData(findHot)
 </script>
 
 <style scoped lang="scss">

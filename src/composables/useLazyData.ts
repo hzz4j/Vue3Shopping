@@ -2,7 +2,11 @@ import { ref, onMounted, type Ref } from "vue"
 import { useIntersectionObserver } from "./useIntersectionObserver"
 
 type GetData<T> = () => Promise<T[]>
-
+/**
+ * 数据懒加载
+ * @param apiFn 请求的API
+ * @returns
+ */
 export function useLazyData<T>(apiFn: GetData<T>) {
   const target = ref(null)
   const result: Ref<T[]> = ref([])
