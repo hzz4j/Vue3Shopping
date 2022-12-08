@@ -7,30 +7,34 @@
         <NextIcon class="btn"></NextIcon>
       </div>
     </template>
-
-    <ul class="brand-wrapper" ref="target">
-      <li v-for="idx in 10" :key="idx">
-        <img
-          src="http://zhoushugang.gitee.io/erabbit-client-pc-static/uploads/brand_goods_1.jpg"
-          alt=""
-        />
-      </li>
-    </ul>
+    <div class="transition-wrapper" ref="target">
+      <Transition name="fade">
+        <template v-if="GoodsBrands.length === 0">
+          <ul class="brand-wrapper">
+            <li v-for="i in 5" :key="i">
+              <SkeletonComponent
+                width="24rem"
+                height="35rem"
+                bg-color="rgb(228, 228, 228)"
+                class="skeleton"
+              ></SkeletonComponent>
+            </li>
+          </ul>
+        </template>
+        <ul class="brand-wrapper" v-else>
+          <li v-for="GoodsBrand in GoodsBrands" :key="GoodsBrand.id">
+            <img :src="GoodsBrand.picture" :alt="GoodsBrand.name" />
+          </li>
+        </ul>
+      </Transition>
+    </div>
   </PanelComponent>
 </template>
 
 <script setup lang="ts">
-import { useIntersectionObserver } from "@/composables/useIntersectionObserver"
-import { ref, onMounted } from "vue"
-const target = ref(null)
-
-onMounted(() => {
-  useIntersectionObserver(target, ([{ isIntersecting }], observerElement) => {
-    if (isIntersecting) {
-      console.log("loaded data")
-    }
-  })
-})
+import { findGoodsBrand } from "@/api/home"
+import { useLazyData } from "@/composables/useLazyData"
+const { target, result: GoodsBrands } = useLazyData(findGoodsBrand)
 </script>
 
 <style lang="scss" scoped>
@@ -61,6 +65,10 @@ onMounted(() => {
       width: 24rem;
       height: 100%;
       object-fit: cover;
+    }
+
+    :deep(.skeleton) {
+      margin: 0;
     }
   }
 }

@@ -13,7 +13,7 @@ export type GoodsHot = {
   alt: string
 }
 
-export type Brand = {
+export type GoodsBrand = {
   id: string
   msg: string
   result: Object[]

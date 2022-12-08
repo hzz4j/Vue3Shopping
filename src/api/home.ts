@@ -1,6 +1,6 @@
 import { request } from "@/utils/request"
 import type { Banner } from "@/types/category/Banner"
-import type { GoodsNew, GoodsHot } from "@/types/home/home"
+import type { GoodsNew, GoodsHot, GoodsBrand } from "@/types/home/home"
 
 /**
  * 获取广告图
@@ -21,4 +21,12 @@ export function findNew() {
  */
 export function findHot() {
   return request<GoodsHot[]>("/home/hot", "get")
+}
+
+/**
+ *
+ * @returns 首页-热门品牌
+ */
+export function findGoodsBrand() {
+  return request<GoodsBrand[]>("/home/brand", "get")
 }
