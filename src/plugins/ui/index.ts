@@ -11,6 +11,35 @@ import PriceIcon from "@/components/libraries/icons/PriceIcon.vue"
 import LookMore from "@/components/libraries/more/LookMore.vue"
 import PanelComponent from "@/components/libraries/panel/PanelComponent.vue"
 
+import defaultImg from "@/assets/images/200.png"
+
+/**
+ * 图片懒加载指令
+ */
+function defineDirective(app: App) {
+  app.directive("lazyload", (el, binding) => {
+    const observer = new IntersectionObserver(
+      ([{ isIntersecting }]) => {
+        if (isIntersecting) {
+          observer.unobserve(el)
+
+          if (el instanceof HTMLImageElement) {
+            // 图片加载错误
+            el.onerror = () => (el.src = defaultImg)
+            // 获取参数绑定值
+            el.src = binding.value
+          }
+        }
+      },
+      {
+        rootMargin: "0px",
+        threshold: 0.1,
+      }
+    )
+    observer.observe(el)
+  })
+}
+
 const UIPlugin = {
   install(app: App) {
     app.component("SkeletonComponent", SkeletonComponent)
@@ -20,6 +49,7 @@ const UIPlugin = {
     app.component("NextIcon", NextIcon)
     app.component("PrevIcon", PrevIcon)
     app.component("PriceIcon", PriceIcon)
+    defineDirective(app)
   },
 }
 

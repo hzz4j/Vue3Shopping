@@ -1,7 +1,7 @@
 <template>
   <div class="goods-item">
     <RouterLink to="/" class="image">
-      <img :src="goods.picture" :alt="goods.name" />
+      <img v-lazyload="goods.picture" :alt="goods.name" />
     </RouterLink>
     <p class="name">{{ goods.name }}</p>
     <p class="desc ellipsis">{{ goods.desc }}</p>
