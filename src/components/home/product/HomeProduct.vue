@@ -1,37 +1,44 @@
 <template>
-  <PanelComponent main-title="居家">
-    <template #right>
-      <div class="sub-links">
-        <RouterLink to="/">海鲜</RouterLink>
-        <RouterLink to="/">水果</RouterLink>
-        <RouterLink to="/">蔬菜</RouterLink>
-        <RouterLink to="/">水产</RouterLink>
-        <RouterLink to="/">禽肉</RouterLink>
-      </div>
-      <LookMore></LookMore>
-    </template>
+  <div class="products-section" ref="target">
+    <PanelComponent
+      v-for="product in Products"
+      :main-title="product.name"
+      :key="product.id"
+    >
+      <template #right>
+        <div class="sub-links">
+          <RouterLink
+            to="/"
+            v-for="children in product.children"
+            :key="children.id"
+            >{{ children.name }}</RouterLink
+          >
+        </div>
+        <LookMore></LookMore>
+      </template>
 
-    <section class="content-wrapper">
-      <RouterLink class="cover" to="/">
-        <img
-          src="http://zhoushugang.gitee.io/erabbit-client-pc-static/uploads/fresh_goods_cover.jpg"
-          alt=""
-        />
-        <strong class="label">
-          <span>生鲜馆</span>
-          <span>全场3件7折</span>
-        </strong>
-      </RouterLink>
-      <ul class="goods__list-wrapper">
-        <li class="goods" v-for="i in 8" :key="i">
-          <HomeGoods></HomeGoods>
-        </li>
-      </ul>
-    </section>
-  </PanelComponent>
+      <section class="content-wrapper">
+        <RouterLink class="cover" to="/">
+          <img :src="product.picture" :alt="product.name" />
+          <strong class="label">
+            <span>{{ product.name }}馆</span>
+            <span>{{ product.saleInfo }}</span>
+          </strong>
+        </RouterLink>
+        <ul class="goods__list-wrapper">
+          <li class="goods" v-for="goods in product.goods" :key="goods.id">
+            <HomeGoods :goods="goods"></HomeGoods>
+          </li>
+        </ul>
+      </section>
+    </PanelComponent>
+  </div>
 </template>
 <script lang="ts" setup>
 import HomeGoods from "@/components/home/product/HomeGoods.vue"
+import { findProduct } from "@/api/home"
+import { useLazyData } from "@/composables/useLazyData"
+const { target, result: Products } = useLazyData(findProduct)
 </script>
 <style lang="scss" scoped>
 .sub-links {

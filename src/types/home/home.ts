@@ -21,3 +21,31 @@ export type GoodsBrand = {
   name: string
   nameEn: string
 }
+
+/**
+ * 商品专区
+ */
+export type ProductGoods = {
+  desc: string
+  id: string
+  name: string
+  picture: string
+  price: string
+}
+
+export type ProductChildren = {
+  id: string
+  name: string
+  layer: number
+  parent: number
+}
+
+export type Product = {
+  id: string
+  name: string
+  picture: string
+  saleInfo: string
+  msg: string
+  goods: ProductGoods[]
+  children: ProductChildren[]
+}

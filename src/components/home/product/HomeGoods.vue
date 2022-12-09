@@ -1,15 +1,12 @@
 <template>
   <div class="goods-item">
-    <RounterLink to="/" class="image">
-      <img
-        src="http://zhoushugang.gitee.io/erabbit-client-pc-static/uploads/fresh_goods_1.jpg"
-        alt=""
-      />
-    </RounterLink>
-    <p class="name">美威 智利原味三文鱼排 240g/袋 4片装</p>
-    <p class="desc ellipsis">海鲜年货</p>
+    <RouterLink to="/" class="image">
+      <img :src="goods.picture" :alt="goods.name" />
+    </RouterLink>
+    <p class="name">{{ goods.name }}</p>
+    <p class="desc ellipsis">{{ goods.desc }}</p>
     <p class="price">
-      <PriceIcon price="109.00"></PriceIcon>
+      <PriceIcon :price="goods.price"></PriceIcon>
     </p>
 
     <div class="extra">
@@ -22,6 +19,11 @@
 </template>
 <script lang="ts" setup>
 import PriceIcon from "@/components/libraries/icons/PriceIcon.vue"
+import type { ProductGoods } from "@/types/home/home"
+
+defineProps<{
+  goods: ProductGoods
+}>()
 </script>
 <style lang="scss" scoped>
 .goods-item {
