@@ -75,7 +75,6 @@ import HomeGoods from "@/components/home/product/HomeGoods.vue"
         display: inline-block;
         font-size: 1.6rem;
         color: #fff;
-
         text-align: center;
 
         &:first-child {
