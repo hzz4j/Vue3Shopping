@@ -23,7 +23,7 @@
         </strong>
       </RouterLink>
       <ul class="goods__list-wrapper">
-        <li class="goods" v-for="i in 10" :key="i">
+        <li class="goods" v-for="i in 8" :key="i">
           <HomeGoods></HomeGoods>
         </li>
       </ul>
@@ -40,6 +40,54 @@ import HomeGoods from "@/components/home/product/HomeGoods.vue"
     font-size: 1.6rem;
     text-decoration: none;
     padding: 0.2rem 2rem;
+  }
+}
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 240px repeat(1, 1fr);
+  grid-column-gap: 1rem;
+  .cover {
+    position: relative;
+    img {
+      width: 100%;
+      height: 61rem;
+      object-fit: cover;
+    }
+
+    .label {
+      position: absolute;
+      left: 0%;
+      top: 50%;
+      transform: translate(0%, -50%);
+      display: flex;
+      width: 19.8rem;
+      height: 6.6rem;
+      line-height: 6.6rem;
+      span {
+        display: inline-block;
+        font-size: 1.6rem;
+        color: #fff;
+
+        text-align: center;
+
+        &:first-child {
+          width: 7.6rem;
+          background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        &:last-child {
+          background-color: rgba(0, 0, 0, 0.7);
+          flex: 1;
+        }
+      }
+    }
+  }
+
+  .goods__list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
   }
 }
 </style>
