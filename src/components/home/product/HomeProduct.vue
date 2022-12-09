@@ -40,6 +40,13 @@ import HomeGoods from "@/components/home/product/HomeGoods.vue"
     font-size: 1.6rem;
     text-decoration: none;
     padding: 0.2rem 2rem;
+
+    &:hover {
+      background-color: $theme-primary-color;
+      color: #fff;
+      padding: 0.5rem 2rem;
+      border-radius: 1rem;
+    }
   }
 }
 
