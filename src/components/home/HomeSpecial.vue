@@ -45,6 +45,19 @@
       width: 100%;
       height: 28.8rem;
     }
+
+    .meta {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 28.8rem;
+      z-index: 1;
+      .title {
+        bottom: 0;
+        left: 0;
+      }
+    }
   }
 }
 </style>
