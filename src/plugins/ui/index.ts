@@ -8,6 +8,9 @@ import CarouselComponent from "@/components/libraries/carousel/CarouselComponent
 import NextIcon from "@/components/libraries/icons/NextIcon.vue"
 import PrevIcon from "@/components/libraries/icons/PrevIcon.vue"
 import PriceIcon from "@/components/libraries/icons/PriceIcon.vue"
+import SeeIcon from "@/components/libraries/icons/SeeIcon.vue"
+import MsgIcon from "@/components/libraries/icons/MsgIcon.vue"
+import LikeIcon from "@/components/libraries/icons/LikeIcon.vue"
 import LookMore from "@/components/libraries/more/LookMore.vue"
 import PanelComponent from "@/components/libraries/panel/PanelComponent.vue"
 
@@ -49,6 +52,9 @@ const UIPlugin = {
     app.component("NextIcon", NextIcon)
     app.component("PrevIcon", PrevIcon)
     app.component("PriceIcon", PriceIcon)
+    app.component("SeeIcon", SeeIcon)
+    app.component("MsgIcon", MsgIcon)
+    app.component("LikeIcon", LikeIcon)
     defineDirective(app)
   },
 }
