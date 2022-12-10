@@ -19,7 +19,6 @@
   </PanelComponent>
 </template>
 <script lang="ts" setup>
-import PanelComponent from "@/components/libraries/panel/PanelComponent.vue"
 import HomeSkeleton from "@/components/home/HomeSkeleton.vue"
 import { findHot } from "@/api/home"
 import { useLazyData } from "@/composables/useLazyData"

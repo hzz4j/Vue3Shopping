@@ -14,6 +14,8 @@
       <HomeBrand></HomeBrand>
       <!-- 商品专区 -->
       <HomeProduct></HomeProduct>
+      <!-- 最新商品 -->
+      <HomeSpecial></HomeSpecial>
     </section>
   </div>
 </template>
@@ -23,6 +25,7 @@ import HomeCategory from "@/components/home/HomeCategory.vue"
 import HomeNew from "@/components/home/HomeNew.vue"
 import HomeHot from "@/components/home/HomeHot.vue"
 import HomeBrand from "@/components/home/HomeBrand.vue"
+import HomeSpecial from "@/components/home/HomeSpecial.vue"
 import HomeProduct from "@/components/home/product/HomeProduct.vue"
 </script>
 
