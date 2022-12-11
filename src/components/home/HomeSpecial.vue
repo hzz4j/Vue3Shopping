@@ -16,7 +16,7 @@
                 <span class="top ellipsis">看到撒娇的撒娇的凯撒就</span>
                 <span class="sub ellipsis">倒萨倒萨倒萨</span>
               </p>
-              <PriceIcon price="19.99"></PriceIcon>
+              <PriceIcon class="price" price="19.99"></PriceIcon>
             </div>
           </RouterLink>
 
@@ -47,6 +47,7 @@
     }
 
     .meta {
+      background: linear-gradient(to top, rgba(255, 253, 253, 0.8));
       position: absolute;
       left: 0;
       top: 0;
@@ -54,8 +55,59 @@
       height: 28.8rem;
       z-index: 1;
       .title {
-        bottom: 0;
+        position: absolute;
         left: 0;
+        bottom: 0;
+        padding-left: 1.6rem;
+        width: 70%;
+        height: 7rem;
+        span {
+          display: block;
+          &.top {
+            color: #fff;
+            font-size: 2.2rem;
+          }
+          &.sub {
+            color: #999;
+            font-size: 1.9rem;
+          }
+        }
+      }
+
+      .price {
+        position: absolute;
+        bottom: 2.5rem;
+        right: 1.6rem;
+        background-color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+      }
+    }
+
+    .footer {
+      height: 7.2rem;
+      line-height: 7.2rem;
+      font-size: 1.6rem;
+      padding: 0 2rem;
+
+      .icon {
+        :deep(.iconfont) {
+          font-size: 2rem;
+          margin-right: 0.5rem;
+          vertical-align: middle;
+        }
+      }
+
+      .like,
+      .view {
+        float: left;
+        margin-right: 2rem;
+        @extend .icon;
+      }
+
+      .reply {
+        float: right;
+        @extend .icon;
       }
     }
   }
