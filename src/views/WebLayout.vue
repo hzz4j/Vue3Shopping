@@ -7,6 +7,8 @@
   </section>
   <!-- header end -->
 
+  <NavBread></NavBread>
+
   <!-- home start -->
   <main>
     <HomeLayout></HomeLayout>

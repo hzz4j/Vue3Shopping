@@ -13,6 +13,7 @@ import MsgIcon from "@/components/libraries/icons/MsgIcon.vue"
 import LikeIcon from "@/components/libraries/icons/LikeIcon.vue"
 import LookMore from "@/components/libraries/more/LookMore.vue"
 import PanelComponent from "@/components/libraries/panel/PanelComponent.vue"
+import NavBread from "@/components/libraries/brand/NavBread.vue"
 
 import defaultImg from "@/assets/images/200.png"
 
@@ -55,6 +56,7 @@ const UIPlugin = {
     app.component("SeeIcon", SeeIcon)
     app.component("MsgIcon", MsgIcon)
     app.component("LikeIcon", LikeIcon)
+    app.component("NavBread", NavBread)
     defineDirective(app)
   },
 }
